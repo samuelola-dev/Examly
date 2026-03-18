@@ -11,13 +11,18 @@ import studentRoute from "./routes/student.routes.js";
 const app = express();
 const PORT = configurations.PORT;
 
-app.get("/", (req, res)=>{
-    res.status(200).send("Welcome to Examly");
-});
+// Middleware
+app.use(express.json());
+app.use(express.urlencoded({extended: true}));
+
 
 app.use("/auth", authRoute);
 app.use("/admin", adminRoute);
 app.use("/student", studentRoute);
+
+app.get("/", (req, res)=>{
+    res.status(200).send("Welcome to Examly");
+});
 
 (async () => {
 

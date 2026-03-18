@@ -1,7 +1,7 @@
 {
   "name": "Examly",
   "version": "1.0.0",
-  "description": "",
+  "description": "Examly, My TechCrush Standalone Project",
   "main": "app.js",
   "type": "module",
   "scripts": {
@@ -10,7 +10,7 @@
     "start": "npm src/app.js"
   },
   "keywords": [],
-  "author": "",
+  "author": "Samuel Ola",
   "license": "ISC",
   "dependencies": {
     "dotenv": "^17.3.1",
