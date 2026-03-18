@@ -1,6 +1,7 @@
 import express from "express";
 import { configurations } from "./config/env.js";
 import { sequelize } from "./config/db.js";
+import { globalErrorHandler } from "./middlewares/errorHandler.js";
 
 // Routes
 import authRoute from "./routes/auth.routes.js";
@@ -11,9 +12,10 @@ import studentRoute from "./routes/student.routes.js";
 const app = express();
 const PORT = configurations.PORT;
 
-// Middleware
+// Middlewares
 app.use(express.json());
 app.use(express.urlencoded({extended: true}));
+
 
 
 app.use("/auth", authRoute);
@@ -23,6 +25,8 @@ app.use("/student", studentRoute);
 app.get("/", (req, res)=>{
     res.status(200).send("Welcome to Examly");
 });
+
+app.use(globalErrorHandler);
 
 (async () => {
 
