@@ -3,7 +3,10 @@ import { configurations } from "./config/env.js";
 import { sequelize } from "./config/db.js";
 
 // Routes
-import authRouter from "./routes/auth.routes.js"
+import authRoute from "./routes/auth.routes.js";
+import adminRoute from "./routes/admin.routes.js";
+import studentRoute from "./routes/student.routes.js";
+
 
 const app = express();
 const PORT = configurations.PORT;
@@ -12,9 +15,13 @@ app.get("/", (req, res)=>{
     res.status(200).send("Welcome to Examly");
 });
 
-app.use("/auth", authRouter);
+app.use("/auth", authRoute);
+app.use("/admin", adminRoute);
+app.use("/student", studentRoute);
 
 (async () => {
+
+    // Try connection to Database
     try {
         await sequelize.authenticate();
         await sequelize.sync({ alter: true });
