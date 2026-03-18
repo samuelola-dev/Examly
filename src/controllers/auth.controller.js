@@ -37,5 +37,5 @@ export const login = asyncHandler(async(req, res) => {
 });
 
 export const showRegister = (req, res) => {
-    
+    res.redirect("/")
 };
